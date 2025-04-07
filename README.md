@@ -48,7 +48,7 @@ I will use the [Raspberry Pi Hardware Hints](https://github.com/cu-ecen-aeld/bui
 
 Buildroot Repository will be hosted at [https://github.com/cu-ecen-aeld/final-project-erpe9416]
 
-ApplicationX code will be hosted in in a repository at [https://github.com/cu-ecen-aeld/assignments-3-and-later-erpe9416]
+Application code will be hosted in a repository at [https://github.com/erpe9416/final-project-assignment-erpe9416]
 
 ## Team project members:
 
