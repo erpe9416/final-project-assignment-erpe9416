@@ -1,0 +1,12 @@
+bin/
+build/
+*.o
+*.elf
+*.map
+*.bin
+*.hex
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
