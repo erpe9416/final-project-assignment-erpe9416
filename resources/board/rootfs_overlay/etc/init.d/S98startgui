@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Load/unload the GUI
+
+LOG=/tmp/S98start_gui.log
+
+case "$1" in
+    start)
+        echo "Loading USB audio driver..." >> "$LOG"
+        modprobe snd-usb-audio
+    
+        export TZ=MST7MDT
+        echo "Starting NTP sync..." >> "$LOG"
+
+        # Keep syncing until year >= 2025
+        while [ "$(date +%Y)" -lt 2025 ]; do
+          echo "Attempting NTP sync..." >> "$LOG"
+          ntpd -n -q -p pool.ntp.org -g >> "$LOG" 2>&1
+          echo "current date: $(date)" >> "$LOG"
+          sleep 10
+        done
+
+        echo "Clock set to $(date); launching GUI." >> "$LOG"
+
+        echo "Launching LVGL app..." >> "$LOG"
+        echo "Launching LVGL app..." > /dev/kmsg
+        /usr/bin/lvgl-app >> /var/log/lvgl-app.log 2>&1 &
+        ;;
+    stop)
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+        ;;
+esac
+
+exit 0
+
